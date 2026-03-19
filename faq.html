@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ — Backflow Services VA</title>
+  <meta name="description" content="Answers to the most common questions about backflow testing, prevention devices, Virginia compliance requirements, and our services." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* ── FAQ PAGE SPECIFIC ── */
+    #faq-main { background: var(--white); }
+
+    .faq-layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .faq-sidebar {
+      position: sticky;
+      top: 90px;
+    }
+    .faq-sidebar h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--copper);
+      margin-bottom: 16px;
+    }
+    .faq-sidebar ul { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+    .faq-sidebar ul li a {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--gray);
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: background 0.2s, color 0.2s;
+      border-left: 2px solid transparent;
+    }
+    .faq-sidebar ul li a:hover {
+      background: var(--light);
+      color: var(--navy);
+      border-left-color: var(--copper);
+    }
+
+    .faq-content { }
+    .faq-category { margin-bottom: 64px; }
+    .faq-category:last-child { margin-bottom: 0; }
+    .faq-category-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .faq-category-icon {
+      width: 40px; height: 40px;
+      background: rgba(200,129,58,0.1);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .faq-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .faq-item {
+      border: 1px solid rgba(0,0,0,0.07);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .faq-q {
+      padding: 20px 24px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--navy);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      background: var(--white);
+      transition: background 0.2s;
+      line-height: 1.4;
+    }
+    .faq-q:hover { background: var(--light); }
+    .faq-q.open { background: var(--navy); color: var(--white); }
+    .faq-q.open .faq-arrow { transform: rotate(180deg); color: var(--copper); }
+    .faq-arrow {
+      font-size: 16px;
+      flex-shrink: 0;
+      transition: transform 0.25s;
+      color: var(--copper);
+    }
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+      background: var(--light);
+    }
+    .faq-a.open { max-height: 500px; }
+    .faq-a-inner {
+      padding: 20px 24px 24px;
+    }
+    .faq-a p {
+      font-size: 15px;
+      color: var(--gray);
+      line-height: 1.75;
+      margin-bottom: 12px;
+    }
+    .faq-a p:last-child { margin-bottom: 0; }
+    .faq-a ul {
+      margin-top: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      list-style: none;
+    }
+    .faq-a ul li {
+      font-size: 14px;
+      color: var(--text);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .faq-a ul li::before {
+      content: '•';
+      color: var(--copper);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .faq-a a { color: var(--copper); font-weight: 600; }
+
+    /* Still have questions */
+    .still-questions {
+      background: var(--navy);
+      border-radius: 20px;
+      padding: 48px;
+      text-align: center;
+      margin-top: 64px;
+    }
+    .still-questions h3 { font-size: 28px; color: var(--white); margin-bottom: 14px; }
+    .still-questions p  { font-size: 16px; color: rgba(255,255,255,0.65); margin-bottom: 32px; line-height: 1.7; }
+    .sq-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    @media (max-width: 900px) {
+      .faq-layout { grid-template-columns: 1fr; gap: 0; }
+      .faq-sidebar { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a class="nav-logo" href="index.html">
+    <img src="logo.png" alt="Backflow Services VA Logo" />
+    <div class="nav-logo-text">
+      Backflow Services VA
+      <span>Virginia's Backflow Experts</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="areas.html">Service Areas</a></li>
+    <li><a href="compliance.html">Compliance</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile" id="mobileNav">
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="areas.html">Service Areas</a>
+  <a href="compliance.html">Compliance</a>
+  <a href="faq.html">FAQ</a>
+  <a href="contact.html" class="nav-cta">Get a Quote</a>
+</div>
+
+<!-- ── PAGE HERO ── -->
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-content">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span>›</span>
+      <span style="color:rgba(255,255,255,0.7)">FAQ</span>
+    </div>
+    <div class="page-hero-label">Got Questions?</div>
+    <h1>Frequently Asked<br/><em>Questions</em></h1>
+    <p>Answers to the most common questions about backflow testing, Virginia compliance requirements, our services, and what to expect when you work with us.</p>
+  </div>
+</div>
+
+<!-- ── FAQ MAIN ── -->
+<section id="faq-main">
+  <div class="max-w">
+    <div class="faq-layout">
+
+      <!-- Sidebar -->
+      <div class="faq-sidebar">
+        <h4>Categories</h4>
+        <ul>
+          <li><a href="#basics">The Basics</a></li>
+          <li><a href="#testing">Testing Process</a></li>
+          <li><a href="#repairs">Repairs & Failures</a></li>
+          <li><a href="#compliance-q">Compliance & Law</a></li>
+          <li><a href="#our-service">Our Service</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+        </ul>
+      </div>
+
+      <!-- FAQ Content -->
+      <div class="faq-content">
+
+        <!-- BASICS -->
+        <div class="faq-category reveal" id="basics">
+          <div class="faq-category-title">
+            <div class="faq-category-icon">💧</div>
+            The Basics
+          </div>
+          <div class="faq-group">
+
+            <div class="faq-item">
+              <div class="faq-q">What is a backflow preventer and what does it do?<span class="faq-arrow">▼</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>A backflow preventer is a mechanical device installed on your plumbing that stops contaminated water from flowing backward into the public water supply. Under certain pressure conditions — like a main break or high demand — water can reverse direction and carry pollutants from your property into the municipal supply, creating serious public health risks.</p>
+                <p>These devices use check valves and pressure relief mechanisms to ensure water only flows in one direction: from the supply into your property, never the other way around.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-q">What is a cross-connection?<span class="faq-arrow">▼</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>A cross-connection is any actual or potential link between your private plumbing and the public water supply where backflow could occur. Common examples include:</p>
+                <ul>
+                  <li>Lawn irrigation systems that spray fertilizers and pesticides</li>
+                  <li>Fire sprinkler systems containing chemical additives</li>
+                  <li>Boilers and HVAC systems with treatment chemicals</li>
+                  <li>Swimming pools connected to the water supply for filling</li>
+                </ul>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-q">Do I have a backflow preventer? How do I find it?<span class="faq-arrow">▼</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>If you have an in-ground irrigation system, fire suppression system, or commercial connection, you almost certainly have a backflow preventer. For irrigation, it's typically located near the main water supply line, often in a ground-level box or above ground near the house foundation.</p>
+                <p>For fire systems, it's usually in the basement or mechanical room near where the sprinkler line enters the building. If you're unsure, give us a call — we're happy to help you locate it at no charge.</p>
+              </div></div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- TESTING -->
+        <div class="faq-category reveal" id="testing">
+          <div class="faq-category-title">
+            <div class="faq-category-icon">🧪</div>
+            Testing Process
+          </div>
+          <div class="faq-group">
+
+            <div class="faq-item">
+              <div class="faq-q">How often does my backflow preventer need to be tested?<span class="faq-arrow">▼</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>Virginia requires annual testing for all regulated backflow prevention assemblies. In addition, a test is required immediately after initial installation and immediately after any repair before the device is returned to service.</p>
+                <p>Some high-hazard applications (like chemical plants, hospitals, or certain industrial facilities) may be required by their water authority to test more frequently.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-q">How long does a backflow test take?<span class="faq-arrow">▼</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>A standard test for a single assembly typically takes 30–60 minutes. If repairs are needed, add time depending on the complexity. For properties with multiple assemblies, we schedule sufficient time to complete all testing in a single visit whenever possible.</p>
+                <p>You do not need to be present for the test if we have access to the assembly location.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-q">Will my water be shut off during the test?<span class="faq-arrow">▼</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>Yes — there will be a brief water interruption, typically just a few minutes, while the test is performed. For irrigation systems, this rarely affects daily operations.</p>
+                <p>For commercial facilities or properties where downtime is sensitive, we can schedule testing during off-hours, early mornings, or weekends. Just let us know your requirements when scheduling.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-q">Do I need to be home or present during the test?<span class="faq-arrow">▼</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>Not necessarily. If the assembly is accessible — in an outdoor ground box, near the meter, or in a common mechanical room — we can often complete the test without you being present. We'll always confirm access details when scheduling.</p>
+                <p>If the device is inside your home or in a locked area, someone will need to provide access.</p>
+              </div></div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- REPAIRS -->
+        <div class="faq-category reveal" id="repairs">
+          <div class="faq-category-title">
+            <div class="faq-category-icon">🔧</div>
+            Repairs & Failures
+          </div>
+          <div class="faq-group">
+
+            <div class="faq-item">
+              <div class="faq-q">What happens if my backflow preventer fails the test?<span class="faq-arrow">▼</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>A failed test means the device isn't operating correctly and must be repaired or replaced before being returned to service. We carry repair parts for most common assembly types on our trucks, so we can often fix the issue on the spot.</p>
+                <p>After any repair, we perform an immediate re-test to confirm the device passes before we leave. We then file the updated passing report with your water authority.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-q">What are common reasons a backflow preventer fails?<span class="faq-arrow">▼</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>The most common causes of test failure include:</p>
+                <ul>
+                  <li>Worn or damaged internal check valve seals or discs</li>
+                  <li>Deteriorated diaphragms or O-rings</li>
+                  <li>Debris or sediment lodged in the check valves</li>
+                  <li>Corrosion from poor water quality or freeze damage</li>
+                  <li>A relief valve stuck open or leaking</li>
+                </ul>
+                <p>Most of these are normal wear-related failures that are easily repaired in the field.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-q">How long does a repair take?<span class="faq-arrow">▼</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>Minor repairs — replacing a check valve seat, disc, O-ring, or relief valve — typically take 30–60 minutes and can be done on-site. Major repairs or full assembly replacement may require a follow-up visit if we need to order a specific part.</p>
+                <p>We'll always give you a clear estimate before starting any repair work.</p>
+              </div></div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- COMPLIANCE -->
+        <div class="faq-category reveal" id="compliance-q">
+          <div class="faq-category-title">
+            <div class="faq-category-icon">📄</div>
+            Compliance & Law
+          </div>
+          <div class="faq-group">
+
+            <div class="faq-item">
+              <div class="faq-q">Do I need a backflow preventer for my lawn irrigation system?<span class="faq-arrow">▼</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>Yes. Virginia's plumbing code and virtually all Northern Virginia water authorities require a backflow preventer on all irrigation systems connected to the public water supply. This is because irrigation systems contact soil, fertilizers, pesticides, and other contaminants.</p>
+                <p>The type of device required — PVB, RPZ, or DC — depends on your system design and local water authority requirements. We can assess this for you free of charge.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-q">What happens if I don't get my annual test done?<span class="faq-arrow">▼</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>Non-compliance can result in:</p>
+                <ul>
+                  <li>A written compliance notice from your water authority</li>
+                  <li>Water service termination if the notice is ignored</li>
+                  <li>Fines or penalties in some jurisdictions</li>
+                  <li>Potential liability if a contamination event occurs</li>
+                </ul>
+                <p>If you've received a notice, <a href="contact.html">contact us immediately</a> — we offer expedited response to help you avoid shutoff.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-q">Who is responsible for making sure the test gets done — me or my water authority?<span class="faq-arrow">▼</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>It is the property owner's responsibility. Your water authority will send reminders, but they are not responsible for scheduling or paying for your test. If you miss the deadline, the consequences fall on you as the property owner.</p>
+                <p>We offer an annual reminder service to ensure you never miss your test date — just ask us to add you to our reminder list when you schedule service.</p>
+              </div></div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- OUR SERVICE -->
+        <div class="faq-category reveal" id="our-service">
+          <div class="faq-category-title">
+            <div class="faq-category-icon">🛡️</div>
+            Our Service
+          </div>
+          <div class="faq-group">
+
+            <div class="faq-item">
+              <div class="faq-q">Do you file the report with my water authority for me?<span class="faq-arrow">▼</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>Yes — always. Filing the test report with your water authority is included in every service we provide. We are approved testers on file with all major Northern Virginia water utilities and submit results electronically within 24 hours of service.</p>
+                <p>You receive a copy of the completed report for your own records via email.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-q">Are you certified and insured?<span class="faq-arrow">▼</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>Absolutely. Every technician holds an ASSE Series 5000 certification (the industry standard for backflow testing in the United States) and is licensed under Virginia DPOR as a plumbing contractor. We carry full general and professional liability insurance on every job.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-q">Do you offer emergency or after-hours service?<span class="faq-arrow">▼</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>Yes. For urgent compliance situations — water shutoff notices, emergencies before a deadline, or situations where waiting until business hours isn't an option — we provide emergency service 7 days a week. Call us directly at <a href="tel:+17035550123">(703) 555-0123</a> for urgent requests.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-q">How quickly can you schedule a test?<span class="faq-arrow">▼</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>For standard annual testing, we typically schedule within 3–5 business days. Same-day and next-day appointments are often available for urgent situations. Commercial and multi-unit bulk scheduling can be coordinated around your preferred dates with advance notice.</p>
+              </div></div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- PRICING -->
+        <div class="faq-category reveal" id="pricing">
+          <div class="faq-category-title">
+            <div class="faq-category-icon">💰</div>
+            Pricing
+          </div>
+          <div class="faq-group">
+
+            <div class="faq-item">
+              <div class="faq-q">How much does a backflow test cost in Virginia?<span class="faq-arrow">▼</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>Pricing depends on the assembly type, number of assemblies, accessibility, and your location. We provide upfront quotes before any work begins — no surprise charges. Contact us for a quote specific to your property.</p>
+                <p>Commercial and multi-unit property owners qualify for volume pricing on bulk testing programs.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-q">Is the repair cost included in the test price?<span class="faq-arrow">▼</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>The test fee and any repair work are quoted separately. We always get your approval before performing any repair work. The re-test after a repair is included at no additional charge.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-q">Do you offer discounts for multiple locations or units?<span class="faq-arrow">▼</span></div>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>Yes. We offer discounted rates for properties with 3 or more assemblies to test, HOA and property management portfolios, and commercial clients with multiple locations. Ask about our commercial program pricing when you contact us.</p>
+              </div></div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Still have questions -->
+        <div class="still-questions reveal">
+          <h3>Still Have Questions?</h3>
+          <p>We're always happy to answer questions before you commit to anything. Give us a call or send us a message and we'll get back to you promptly.</p>
+          <div class="sq-actions">
+            <a href="contact.html" class="btn-primary">📋 Send Us a Message</a>
+            <a href="tel:+17035550123" class="btn-outline" style="border-color:rgba(255,255,255,0.3)">📞 (703) 555-0123</a>
+          </div>
+        </div>
+
+      </div><!-- /faq-content -->
+    </div><!-- /faq-layout -->
+  </div>
+</section>
+
+<!-- ── EMERGENCY BANNER ── -->
+<div class="emergency-banner">
+  <p>🚨 Received a compliance notice from your water authority? Don't risk shutoff.</p>
+  <a href="tel:+17035550123">Call Now: (703) 555-0123</a>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="logo.png" alt="Backflow Services VA" />
+        <p>Virginia's trusted backflow prevention specialists. Protecting public health through expert testing, repair, and installation services across Northern Virginia since 2009.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="services.html">Annual Testing</a></li>
+          <li><a href="services.html">Device Repair</a></li>
+          <li><a href="services.html">New Installation</a></li>
+          <li><a href="services.html">Irrigation Services</a></li>
+          <li><a href="services.html">Commercial Programs</a></li>
+          <li><a href="services.html">Compliance Response</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="areas.html">Service Areas</a></li>
+          <li><a href="compliance.html">Compliance Info</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html">Get a Quote</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="tel:+17035550123">(703) 555-0123</a></li>
+          <li><a href="mailto:info@backflowservicesva.com">info@backflowservicesva.com</a></li>
+          <li><a href="areas.html">Northern Virginia & Beyond</a></li>
+          <li><a href="contact.html">Mon–Fri 7am–6pm</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Backflow Services VA. All rights reserved. Licensed & Insured in the Commonwealth of Virginia.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

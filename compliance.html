@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compliance Information — Backflow Services VA</title>
+  <meta name="description" content="Learn about Virginia backflow prevention regulations, who must test, penalties for non-compliance, and how to stay compliant with your water authority." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* ── COMPLIANCE PAGE SPECIFIC ── */
+
+    #compliance-main { background: var(--light); }
+
+    .compliance-two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-bottom: 32px;
+    }
+
+    /* Who needs section */
+    #who-needs { background: var(--white); }
+    .who-needs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .who-needs-card {
+      background: var(--light);
+      border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 14px;
+      padding: 32px 28px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .who-needs-card:hover {
+      border-color: var(--copper);
+      transform: translateY(-3px);
+    }
+    .who-needs-icon {
+      font-size: 36px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .who-needs-card h4 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .who-needs-card p {
+      font-size: 14px;
+      color: var(--gray);
+      line-height: 1.65;
+    }
+
+    /* Penalties */
+    #penalties { background: var(--navy); color: var(--white); }
+    #penalties .section-title { color: var(--white); }
+    #penalties .section-desc  { color: rgba(255,255,255,0.6); }
+    .penalty-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .penalty-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(200,129,58,0.2);
+      border-radius: 14px;
+      padding: 32px 28px;
+    }
+    .penalty-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 900;
+      color: var(--copper);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .penalty-card h4 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .penalty-card p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.6;
+    }
+
+    /* Timeline */
+    #timeline { background: var(--white); }
+    .timeline {
+      position: relative;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 32px;
+      top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--copper), rgba(200,129,58,0.1));
+    }
+    .timeline-item {
+      display: flex;
+      gap: 32px;
+      margin-bottom: 40px;
+      align-items: flex-start;
+    }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-dot {
+      width: 64px; height: 64px;
+      min-width: 64px;
+      border-radius: 50%;
+      background: var(--navy);
+      border: 3px solid var(--copper);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px;
+      position: relative;
+      z-index: 1;
+    }
+    .timeline-content {
+      background: var(--light);
+      border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 14px;
+      padding: 28px;
+      flex: 1;
+    }
+    .timeline-content h4 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .timeline-content p {
+      font-size: 14px;
+      color: var(--gray);
+      line-height: 1.65;
+    }
+    .timeline-tag {
+      display: inline-block;
+      background: rgba(200,129,58,0.15);
+      color: var(--copper);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 700px) {
+      .compliance-two-col { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a class="nav-logo" href="index.html">
+    <img src="logo.png" alt="Backflow Services VA Logo" />
+    <div class="nav-logo-text">
+      Backflow Services VA
+      <span>Virginia's Backflow Experts</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="areas.html">Service Areas</a></li>
+    <li><a href="compliance.html">Compliance</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile" id="mobileNav">
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="areas.html">Service Areas</a>
+  <a href="compliance.html">Compliance</a>
+  <a href="faq.html">FAQ</a>
+  <a href="contact.html" class="nav-cta">Get a Quote</a>
+</div>
+
+<!-- ── PAGE HERO ── -->
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-content">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span>›</span>
+      <span style="color:rgba(255,255,255,0.7)">Compliance</span>
+    </div>
+    <div class="page-hero-label">Regulatory Information</div>
+    <h1>Virginia Backflow<br/><em>Compliance Guide</em></h1>
+    <p>Everything property owners, managers, and HOAs need to know about Virginia's backflow prevention regulations, testing requirements, and how to stay compliant with your local water authority.</p>
+  </div>
+</div>
+
+<!-- ── COMPLIANCE OVERVIEW ── -->
+<section id="compliance-main">
+  <div class="max-w">
+    <div class="section-header reveal">
+      <div class="section-label">The Basics</div>
+      <h2 class="section-title">Understanding the Law</h2>
+      <p class="section-desc">Virginia's plumbing code and individual water authority cross-connection control programs require annual testing of all backflow prevention devices on regulated connections.</p>
+    </div>
+
+    <div class="compliance-two-col">
+      <div class="compliance-card reveal">
+        <h3>What Is a Cross-Connection?</h3>
+        <p>A cross-connection is any actual or potential link between your private plumbing and the public water supply where backflow could occur. Common examples include irrigation systems, fire sprinkler systems, and commercial boiler connections.</p>
+        <p style="margin-top:12px">Under certain conditions — like a sudden drop in main pressure — water can reverse direction, pulling contaminants from your property into the public water supply. Backflow preventers are the mechanical defense against this.</p>
+        <div class="compliance-highlights" style="margin-top:20px">
+          <div class="compliance-hl"><div class="compliance-hl-icon">⚗️</div>Chemical and fertilizer contamination from irrigation</div>
+          <div class="compliance-hl"><div class="compliance-hl-icon">🔥</div>Fire suppressant chemicals from sprinkler systems</div>
+          <div class="compliance-hl"><div class="compliance-hl-icon">♨️</div>Boiler treatment chemicals from heating systems</div>
+          <div class="compliance-hl"><div class="compliance-hl-icon">🧫</div>Bacteria from pools, fountains, or non-potable sources</div>
+        </div>
+      </div>
+      <div class="compliance-card reveal">
+        <h3>Why Annual Testing Is Required</h3>
+        <p>Backflow preventers are mechanical devices with internal check valves, seals, and springs that wear out over time. A device can fail to operate correctly while appearing intact from the outside. Annual testing verifies that the device is mechanically sound and providing the protection it was designed for.</p>
+        <p style="margin-top:12px">Virginia law under the Uniform Statewide Building Code (USBC) and the Virginia Waterworks Regulations (9VAC25-780) require backflow prevention assemblies to be tested at the time of installation and at least annually thereafter by a certified tester.</p>
+        <div class="warning-box" style="margin-top:20px">
+          <h4>⚠️ Important</h4>
+          <p>It is the property owner's responsibility — not the water authority's — to ensure devices are tested and results are filed on time. Non-compliance can result in water service termination.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHO NEEDS ── -->
+<section id="who-needs">
+  <div class="max-w">
+    <div class="section-header centered reveal">
+      <div class="section-label">Am I Required to Test?</div>
+      <h2 class="section-title">Who Must Test Their<br/>Backflow Preventer?</h2>
+      <p class="section-desc">If you have any of the following connections to the public water supply, you almost certainly need annual backflow testing. When in doubt, call us — we'll let you know for free.</p>
+    </div>
+    <div class="who-needs-grid">
+      <div class="who-needs-card reveal">
+        <span class="who-needs-icon">🌿</span>
+        <h4>Lawn Irrigation Systems</h4>
+        <p>Any in-ground irrigation system connected to the public supply requires a backflow preventer and annual testing. This is the most common requirement for homeowners in Northern Virginia.</p>
+      </div>
+      <div class="who-needs-card reveal">
+        <span class="who-needs-icon">🔥</span>
+        <h4>Fire Suppression Systems</h4>
+        <p>All sprinkler and fire suppression systems require a backflow preventer because they contain chemical additives that must never enter the drinking water supply.</p>
+      </div>
+      <div class="who-needs-card reveal">
+        <span class="who-needs-icon">🏢</span>
+        <h4>Commercial Buildings</h4>
+        <p>Most commercial facilities require at least a double-check assembly on the main service line. High-hazard operations (labs, medical, industrial) require a reduced pressure zone assembly.</p>
+      </div>
+      <div class="who-needs-card reveal">
+        <span class="who-needs-icon">♨️</span>
+        <h4>Boilers & HVAC Systems</h4>
+        <p>Boilers and hydronic heating/cooling systems use treatment chemicals that make them regulated cross-connections requiring backflow protection and annual testing.</p>
+      </div>
+      <div class="who-needs-card reveal">
+        <span class="who-needs-icon">🏊</span>
+        <h4>Swimming Pools & Fountains</h4>
+        <p>Any pool, spa, or fountain with a direct potable water fill connection requires backflow prevention to prevent chemical-laden water from back-siphoning into the supply.</p>
+      </div>
+      <div class="who-needs-card reveal">
+        <span class="who-needs-icon">🏥</span>
+        <h4>Medical & Dental Offices</h4>
+        <p>Healthcare facilities are classified as high-hazard because dental and medical equipment can introduce biological and chemical contaminants into their plumbing.</p>
+      </div>
+      <div class="who-needs-card reveal">
+        <span class="who-needs-icon">🧪</span>
+        <h4>Laboratories & Industrial Facilities</h4>
+        <p>Any facility where chemicals, solvents, or biological agents are used requires high-protection backflow assemblies and strict annual testing.</p>
+      </div>
+      <div class="who-needs-card reveal">
+        <span class="who-needs-icon">🚗</span>
+        <h4>Car Washes & Laundries</h4>
+        <p>Cleaning chemical use at car washes, laundromats, and similar businesses creates a regulated cross-connection that requires a backflow assembly and annual testing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PENALTIES ── -->
+<section id="penalties">
+  <div class="max-w">
+    <div class="section-header reveal">
+      <div class="section-label">Non-Compliance Risks</div>
+      <h2 class="section-title">The Cost of Not Testing</h2>
+      <p class="section-desc">Missing your annual backflow test isn't just a paperwork issue — it carries real consequences for your property, your tenants, and your liability.</p>
+    </div>
+    <div class="penalty-grid">
+      <div class="penalty-card reveal">
+        <div class="penalty-num">⛔</div>
+        <h4>Water Service Termination</h4>
+        <p>Virginia water authorities can and do shut off water service to non-compliant properties. Restoration requires proof of completed testing and may take days.</p>
+      </div>
+      <div class="penalty-card reveal">
+        <div class="penalty-num">💸</div>
+        <h4>Fines & Penalties</h4>
+        <p>Local water authorities may impose fines for late or missing test reports. Repeat violations can result in escalating penalties and mandatory inspections.</p>
+      </div>
+      <div class="penalty-card reveal">
+        <div class="penalty-num">⚖️</div>
+        <h4>Liability Exposure</h4>
+        <p>If a contamination event occurs because your unprotected or untested device failed, you may be liable for costs to remediate the public water supply — a potentially enormous financial exposure.</p>
+      </div>
+      <div class="penalty-card reveal">
+        <div class="penalty-num">📰</div>
+        <h4>Public Health Risk</h4>
+        <p>Backflow events are public health emergencies. A single event can contaminate hundreds or thousands of customers' water supply and lead to mandatory boil-water advisories.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── COMPLIANCE TIMELINE ── -->
+<section id="timeline">
+  <div class="max-w">
+    <div class="section-header centered reveal">
+      <div class="section-label">Compliance Timeline</div>
+      <h2 class="section-title">What Happens If You<br/>Miss Your Test?</h2>
+      <p class="section-desc">Here's how a typical non-compliance situation unfolds — and why acting fast at every stage matters.</p>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <div class="timeline-dot">📅</div>
+        <div class="timeline-content">
+          <div class="timeline-tag">Stage 1 — Due Date Passes</div>
+          <h4>Test Report Not Filed</h4>
+          <p>Your annual test due date passes without a report being received by the water authority. Their system flags your account as non-compliant.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot">📬</div>
+        <div class="timeline-content">
+          <div class="timeline-tag">Stage 2 — Typically Within 30–60 Days</div>
+          <h4>Compliance Notice Mailed</h4>
+          <p>You receive a written notice from the water authority requiring you to submit test results by a specific deadline — usually 30 days. This is your first warning.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot">⚠️</div>
+        <div class="timeline-content">
+          <div class="timeline-tag">Stage 3 — Deadline Ignored</div>
+          <h4>Final Notice Issued</h4>
+          <p>If the first notice is ignored, a final notice is sent with a firm shutoff date. At this point the situation is urgent — call us immediately for expedited service.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot">🚫</div>
+        <div class="timeline-content">
+          <div class="timeline-tag">Stage 4 — Shutoff Day</div>
+          <h4>Water Service Terminated</h4>
+          <p>The water authority disconnects service. Restoration requires proof of testing, possible inspection fees, and reconnection charges — all while your property has no water.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot">✅</div>
+        <div class="timeline-content">
+          <div class="timeline-tag">Solution — Act Immediately</div>
+          <h4>Call Us at Any Stage</h4>
+          <p>The earlier you act, the easier and cheaper the resolution. We can often prevent shutoff with same-day or next-day service and direct coordination with your water authority. Call us the moment you receive any notice.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── EMERGENCY BANNER ── -->
+<div class="emergency-banner">
+  <p>🚨 Received a compliance notice from your water authority? Don't risk shutoff.</p>
+  <a href="tel:+17035550123">Call Now: (703) 555-0123</a>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="logo.png" alt="Backflow Services VA" />
+        <p>Virginia's trusted backflow prevention specialists. Protecting public health through expert testing, repair, and installation services across Northern Virginia since 2009.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="services.html">Annual Testing</a></li>
+          <li><a href="services.html">Device Repair</a></li>
+          <li><a href="services.html">New Installation</a></li>
+          <li><a href="services.html">Irrigation Services</a></li>
+          <li><a href="services.html">Commercial Programs</a></li>
+          <li><a href="services.html">Compliance Response</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="areas.html">Service Areas</a></li>
+          <li><a href="compliance.html">Compliance Info</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html">Get a Quote</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="tel:+17035550123">(703) 555-0123</a></li>
+          <li><a href="mailto:info@backflowservicesva.com">info@backflowservicesva.com</a></li>
+          <li><a href="areas.html">Northern Virginia & Beyond</a></li>
+          <li><a href="contact.html">Mon–Fri 7am–6pm</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Backflow Services VA. All rights reserved. Licensed & Insured in the Commonwealth of Virginia.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

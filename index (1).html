@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Backflow Services VA — Certified Backflow Testing & Prevention in Virginia</title>
+  <meta name="description" content="Virginia's trusted backflow prevention specialists. Certified testing, installation, repair & annual compliance reports for residential and commercial properties." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* ── HOME-SPECIFIC STYLES ── */
+
+    /* Hero */
+    #hero {
+      min-height: 100vh;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 100px 40px 60px;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 70% at 70% 40%, rgba(200,129,58,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 50% at 20% 80%, rgba(17,40,71,0.8) 0%, transparent 60%);
+    }
+    .hero-grid-lines {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(200,129,58,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200,129,58,0.06) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(200,129,58,0.15);
+      border: 1px solid rgba(200,129,58,0.4);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 12px;
+      color: var(--copper2);
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      animation: fadeUp 0.7s ease both;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--copper);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.4); }
+    }
+    .hero-h1 {
+      font-size: clamp(44px, 6vw, 80px);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.05;
+      margin-bottom: 24px;
+      animation: fadeUp 0.7s 0.1s ease both;
+    }
+    .hero-h1 em { font-style: normal; color: var(--copper); }
+    .hero-sub {
+      font-size: 18px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.7;
+      max-width: 560px;
+      margin-bottom: 44px;
+      font-weight: 300;
+      animation: fadeUp 0.7s 0.2s ease both;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      animation: fadeUp 0.7s 0.3s ease both;
+    }
+    .hero-stats {
+      position: absolute;
+      bottom: 0; right: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      animation: fadeUp 0.7s 0.4s ease both;
+    }
+    .hero-stat-row { display: flex; }
+    .hero-stat {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(200,129,58,0.15);
+      padding: 32px 44px;
+      text-align: center;
+    }
+    .hero-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      font-weight: 900;
+      color: var(--copper);
+      line-height: 1;
+    }
+    .hero-stat-label {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-top: 6px;
+      font-weight: 500;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Why Us */
+    #why { background: var(--navy); color: var(--white); }
+    #why .section-title { color: var(--white); }
+    #why .section-desc  { color: rgba(255,255,255,0.6); }
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .why-features { display: flex; flex-direction: column; gap: 32px; }
+    .why-feature  { display: flex; gap: 20px; align-items: flex-start; }
+    .why-feature-icon {
+      width: 48px; height: 48px; min-width: 48px;
+      background: rgba(200,129,58,0.15);
+      border: 1px solid rgba(200,129,58,0.3);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+    }
+    .why-feature h4 { font-size: 17px; font-weight: 600; color: var(--white); margin-bottom: 6px; }
+    .why-feature p  { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.65; }
+    .why-visual {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(200,129,58,0.2);
+      border-radius: 20px;
+      padding: 48px;
+    }
+    .cert-badge { text-align: center; margin-bottom: 40px; }
+    .cert-badge-icon { font-size: 72px; display: block; margin-bottom: 16px; }
+    .cert-badge h3 { font-size: 26px; color: var(--copper); margin-bottom: 8px; }
+    .cert-badge p  { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+    .cert-items { display: flex; flex-direction: column; gap: 12px; }
+    .cert-item {
+      display: flex; align-items: center; gap: 12px;
+      padding: 14px 18px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.06);
+      font-size: 13px; color: rgba(255,255,255,0.7); font-weight: 500;
+    }
+    .cert-item-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--copper); flex-shrink: 0; }
+
+    /* Process */
+    #process { background: var(--white); }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      position: relative;
+    }
+    .process-steps::after {
+      content: '';
+      position: absolute;
+      top: 32px; left: 10%; right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, var(--copper), rgba(200,129,58,0.1));
+      z-index: 0;
+    }
+    .process-step { position: relative; z-index: 1; padding: 0 16px; text-align: center; }
+    .step-num {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: var(--navy); color: var(--white);
+      font-family: 'Playfair Display', serif;
+      font-size: 22px; font-weight: 900;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px;
+      border: 3px solid var(--copper);
+    }
+    .process-step h4 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+    .process-step p  { font-size: 13px; color: var(--gray); line-height: 1.65; }
+
+    /* Testimonials */
+    #testimonials { background: var(--navy); }
+    #testimonials .section-title { color: var(--white); }
+    .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .review-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(200,129,58,0.15);
+      border-radius: 16px;
+      padding: 36px;
+    }
+    .review-stars { color: var(--copper); font-size: 18px; margin-bottom: 16px; letter-spacing: 2px; }
+    .review-text  { font-size: 15px; color: rgba(255,255,255,0.75); line-height: 1.75; margin-bottom: 24px; font-style: italic; }
+    .review-author { display: flex; align-items: center; gap: 14px; }
+    .review-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--copper);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; color: var(--white); font-size: 16px; flex-shrink: 0;
+    }
+    .review-name { font-size: 15px; font-weight: 700; color: var(--white); }
+    .review-role { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 2px; }
+
+    /* CTA band */
+    #cta-band {
+      background: var(--cream);
+      padding: 80px 40px;
+      text-align: center;
+    }
+    #cta-band h2 { font-size: clamp(28px, 3vw, 44px); color: var(--navy); margin-bottom: 16px; }
+    #cta-band p  { font-size: 17px; color: var(--gray); margin-bottom: 36px; }
+    .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* Responsive home-only */
+    @media (max-width: 900px) {
+      #hero { padding: 100px 24px 220px; }
+      .hero-stats {
+        position: absolute;
+        bottom: 0; left: 0; right: 0;
+        flex-direction: row;
+      }
+      .hero-stat-row { flex: 1; }
+      .hero-stat { flex: 1; padding: 20px 12px; }
+      .hero-stat-num { font-size: 28px; }
+      .why-grid { grid-template-columns: 1fr; gap: 40px; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .process-steps::after { display: none; }
+      .reviews-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      #hero { padding: 100px 20px 260px; }
+      .hero-stat-row { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a class="nav-logo" href="index.html">
+    <img src="logo.png" alt="Backflow Services VA Logo" />
+    <div class="nav-logo-text">
+      Backflow Services VA
+      <span>Virginia's Backflow Experts</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="areas.html">Service Areas</a></li>
+    <li><a href="compliance.html">Compliance</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="nav-mobile" id="mobileNav">
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="areas.html">Service Areas</a>
+  <a href="compliance.html">Compliance</a>
+  <a href="faq.html">FAQ</a>
+  <a href="contact.html" class="nav-cta">Get a Quote</a>
+</div>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🛡️ Virginia State Certified</div>
+    <h1 class="hero-h1">
+      Protecting Virginia's<br/>
+      Water Supply — <em>One<br/>Test at a Time.</em>
+    </h1>
+    <p class="hero-sub">
+      Licensed and certified backflow prevention specialists serving residential, commercial, and industrial properties across Northern Virginia and beyond. Annual testing, same-day reporting, and guaranteed compliance.
+    </p>
+    <div class="hero-actions">
+      <a href="contact.html" class="btn-primary">📋 Schedule a Test →</a>
+      <a href="tel:+17035550123" class="btn-outline">📞 Call Us Now</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat-row">
+      <div class="hero-stat">
+        <div class="hero-stat-num">2,500+</div>
+        <div class="hero-stat-label">Tests Completed</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">100%</div>
+        <div class="hero-stat-label">Compliance Rate</div>
+      </div>
+    </div>
+    <div class="hero-stat-row">
+      <div class="hero-stat">
+        <div class="hero-stat-num">15+</div>
+        <div class="hero-stat-label">Years Experience</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">24hr</div>
+        <div class="hero-stat-label">Report Turnaround</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TRUST BAR ── -->
+<div class="trust-bar">
+  <div class="trust-item"><span class="trust-icon">✅</span> VA DPOR Certified</div>
+  <div class="trust-item"><span class="trust-icon">🏅</span> ASSE Certified Testers</div>
+  <div class="trust-item"><span class="trust-icon">📄</span> Same-Day Reports Filed</div>
+  <div class="trust-item"><span class="trust-icon">🔧</span> All Makes & Models</div>
+  <div class="trust-item"><span class="trust-icon">⚡</span> Emergency Service Available</div>
+  <div class="trust-item"><span class="trust-icon">🏠</span> Residential & Commercial</div>
+</div>
+
+<!-- ── SERVICES PREVIEW ── -->
+<section style="background:var(--light)">
+  <div class="max-w">
+    <div class="section-header reveal">
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">Comprehensive Backflow<br/>Prevention Services</h2>
+      <p class="section-desc">From annual compliance testing to full device installation and repair — we handle everything your property needs to stay safe and code-compliant.</p>
+    </div>
+    <div class="services-grid reveal">
+      <div class="service-card">
+        <div class="service-icon">🧪</div>
+        <h3>Annual Backflow Testing</h3>
+        <p>Mandated yearly testing for all backflow prevention assemblies. We file directly with your water authority within 24 hours.</p>
+        <ul class="service-list">
+          <li>ASSE-certified testers on every job</li>
+          <li>Report filed within 24 hours</li>
+          <li>Pass/fail certification letter provided</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔧</div>
+        <h3>Backflow Device Repair</h3>
+        <p>Failed your test? We carry parts to repair most assemblies on the spot, minimizing service interruption.</p>
+        <ul class="service-list">
+          <li>Same-visit repairs when possible</li>
+          <li>OEM and quality aftermarket parts</li>
+          <li>Immediate re-test after repair</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏗️</div>
+        <h3>New Device Installation</h3>
+        <p>New construction or upgraded assembly — we install the right device for your application and local requirements.</p>
+        <ul class="service-list">
+          <li>Free site assessment included</li>
+          <li>Permit assistance available</li>
+          <li>All assembly types and brands</li>
+        </ul>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:48px" class="reveal">
+      <a href="services.html" class="btn-dark">View All Services →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHY US ── -->
+<section id="why">
+  <div class="max-w">
+    <div class="why-grid">
+      <div>
+        <div class="section-label reveal">Why Choose Us</div>
+        <h2 class="section-title reveal">Virginia's Most<br/>Trusted Backflow<br/>Specialists</h2>
+        <p class="section-desc reveal">We've built our reputation on precision, speed, and reliability. When water safety is on the line, you need professionals who know Virginia codes inside and out.</p>
+        <div class="why-features" style="margin-top:40px">
+          <div class="why-feature reveal">
+            <div class="why-feature-icon">⚡</div>
+            <div>
+              <h4>Same-Day Scheduling Available</h4>
+              <p>Urgent compliance deadline? We offer same-day and next-day appointments throughout our service area.</p>
+            </div>
+          </div>
+          <div class="why-feature reveal">
+            <div class="why-feature-icon">📄</div>
+            <div>
+              <h4>24-Hour Report Filing</h4>
+              <p>Your test report is filed directly with your local water authority within 24 hours of service. No chasing paperwork.</p>
+            </div>
+          </div>
+          <div class="why-feature reveal">
+            <div class="why-feature-icon">🛠️</div>
+            <div>
+              <h4>Parts On Every Truck</h4>
+              <p>Our trucks are stocked with repair parts for the most common assemblies. Most repairs happen on the first visit.</p>
+            </div>
+          </div>
+          <div class="why-feature reveal">
+            <div class="why-feature-icon">🔒</div>
+            <div>
+              <h4>Fully Licensed & Insured</h4>
+              <p>Every technician is ASSE certified and Virginia-licensed with full liability insurance on every job.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="why-visual reveal">
+        <div class="cert-badge">
+          <span class="cert-badge-icon">🏅</span>
+          <h3>Fully Certified & Compliant</h3>
+          <p>Every technician holds the required certifications to test, repair, and install all types of backflow prevention assemblies in Virginia.</p>
+        </div>
+        <div class="cert-items">
+          <div class="cert-item"><div class="cert-item-dot"></div>ASSE Series 5000 Certified Testers</div>
+          <div class="cert-item"><div class="cert-item-dot"></div>Virginia DPOR Licensed Plumbing Contractors</div>
+          <div class="cert-item"><div class="cert-item-dot"></div>VA DEQ Water Safety Compliance Trained</div>
+          <div class="cert-item"><div class="cert-item-dot"></div>Fully Insured — General & Professional Liability</div>
+          <div class="cert-item"><div class="cert-item-dot"></div>Approved Testers with FCWA, UOSA, WSSI, Loudoun Water</div>
+          <div class="cert-item"><div class="cert-item-dot"></div>AWWA (American Water Works Association) Member</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROCESS ── -->
+<section>
+  <div class="max-w">
+    <div class="section-header centered reveal">
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title">Simple. Fast. Compliant.</h2>
+      <p class="section-desc">Getting your backflow test done shouldn't be complicated. Here's what to expect.</p>
+    </div>
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="step-num">1</div>
+        <h4>Schedule Online or by Phone</h4>
+        <p>Book in minutes. We'll confirm your appointment within 2 hours.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num">2</div>
+        <h4>Technician Arrives On Time</h4>
+        <p>Our certified technician arrives with all equipment and parts ready.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num">3</div>
+        <h4>Test Performed & Documented</h4>
+        <p>We conduct the test to ASSE standards and note any repairs needed.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num">4</div>
+        <h4>Report Filed For You</h4>
+        <p>Your report is filed with your water authority within 24 hours.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num">5</div>
+        <h4>Annual Reminder Sent</h4>
+        <p>We track your cycle and remind you when the next test is due.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section id="testimonials">
+  <div class="max-w">
+    <div class="section-header centered reveal">
+      <div class="section-label">Reviews</div>
+      <h2 class="section-title">What Our Clients Say</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Got a compliance notice from Fairfax Water on a Friday afternoon. Backflow Services VA had someone out Monday and the report was filed by Tuesday. Incredible turnaround."</p>
+        <div class="review-author">
+          <div class="review-avatar">RM</div>
+          <div>
+            <div class="review-name">Robert M.</div>
+            <div class="review-role">Property Manager, Fairfax County</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"We manage 40+ HOA units. These guys handle all of our annual testing in one day with clean consolidated billing. Best decision we've made for our maintenance program."</p>
+        <div class="review-author">
+          <div class="review-avatar">SL</div>
+          <div>
+            <div class="review-name">Sarah L.</div>
+            <div class="review-role">HOA Community Manager, Loudoun County</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Our irrigation backflow failed and they had the parts on the truck. Repaired and re-tested in the same visit. That's professionalism — I didn't pay for two trips."</p>
+        <div class="review-author">
+          <div class="review-avatar">JD</div>
+          <div>
+            <div class="review-name">James D.</div>
+            <div class="review-role">Homeowner, Ashburn, VA</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA BAND ── -->
+<section id="cta-band">
+  <div class="max-w reveal">
+    <h2>Ready to Schedule Your Backflow Test?</h2>
+    <p>Same-day and next-day appointments available. We handle the paperwork — you stay compliant.</p>
+    <div class="cta-actions">
+      <a href="contact.html" class="btn-primary">📋 Request a Quote</a>
+      <a href="tel:+17035550123" class="btn-dark">📞 (703) 555-0123</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── EMERGENCY BANNER ── -->
+<div class="emergency-banner">
+  <p>🚨 Received a compliance notice from your water authority? Don't risk shutoff.</p>
+  <a href="tel:+17035550123">Call Now: (703) 555-0123</a>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="logo.png" alt="Backflow Services VA" />
+        <p>Virginia's trusted backflow prevention specialists. Protecting public health through expert testing, repair, and installation services across Northern Virginia since 2009.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="services.html">Annual Testing</a></li>
+          <li><a href="services.html">Device Repair</a></li>
+          <li><a href="services.html">New Installation</a></li>
+          <li><a href="services.html">Irrigation Services</a></li>
+          <li><a href="services.html">Commercial Programs</a></li>
+          <li><a href="services.html">Compliance Response</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="areas.html">Service Areas</a></li>
+          <li><a href="compliance.html">Compliance Info</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html">Get a Quote</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="tel:+17035550123">(703) 555-0123</a></li>
+          <li><a href="mailto:info@backflowservicesva.com">info@backflowservicesva.com</a></li>
+          <li><a href="areas.html">Northern Virginia & Beyond</a></li>
+          <li><a href="contact.html">Mon–Fri 7am–6pm</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Backflow Services VA. All rights reserved. Licensed & Insured in the Commonwealth of Virginia.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Service Areas — Backflow Services VA</title>
+  <meta name="description" content="Backflow Services VA serves Northern Virginia including Fairfax, Prince William, Loudoun, Arlington, Alexandria, and surrounding counties." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* ── AREAS PAGE SPECIFIC ── */
+    #areas-main { background: var(--light); }
+
+    .county-section { margin-bottom: 72px; }
+    .county-section:last-child { margin-bottom: 0; }
+    .county-header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 28px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid var(--border);
+    }
+    .county-icon {
+      width: 52px; height: 52px;
+      background: var(--navy);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+    .county-header h3 {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .county-header p {
+      font-size: 13px;
+      color: var(--gray);
+    }
+    .city-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .city-tag {
+      background: var(--white);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 8px;
+      padding: 10px 18px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--navy);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .city-tag:hover {
+      border-color: var(--copper);
+      background: rgba(200,129,58,0.04);
+    }
+    .city-tag-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--copper);
+      flex-shrink: 0;
+    }
+
+    /* Water authorities */
+    #water-authorities { background: var(--navy); color: var(--white); }
+    #water-authorities .section-title { color: var(--white); }
+    #water-authorities .section-desc  { color: rgba(255,255,255,0.6); }
+    .authority-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .authority-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(200,129,58,0.2);
+      border-radius: 14px;
+      padding: 28px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .authority-card:hover {
+      background: rgba(200,129,58,0.07);
+      border-color: rgba(200,129,58,0.4);
+    }
+    .authority-card h4 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .authority-abbr {
+      font-size: 12px;
+      color: var(--copper);
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .authority-card p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.6;
+    }
+    .authority-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #4ade80;
+      margin-top: 12px;
+    }
+    .authority-status::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #4ade80;
+    }
+
+    /* Not sure callout */
+    .not-sure-box {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 20px;
+      padding: 48px;
+      text-align: center;
+      margin-top: 64px;
+    }
+    .not-sure-box h3 { font-size: 28px; color: var(--navy); margin-bottom: 14px; }
+    .not-sure-box p  { font-size: 16px; color: var(--gray); margin-bottom: 32px; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.7; }
+    .not-sure-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a class="nav-logo" href="index.html">
+    <img src="logo.png" alt="Backflow Services VA Logo" />
+    <div class="nav-logo-text">
+      Backflow Services VA
+      <span>Virginia's Backflow Experts</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="areas.html">Service Areas</a></li>
+    <li><a href="compliance.html">Compliance</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile" id="mobileNav">
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="areas.html">Service Areas</a>
+  <a href="compliance.html">Compliance</a>
+  <a href="faq.html">FAQ</a>
+  <a href="contact.html" class="nav-cta">Get a Quote</a>
+</div>
+
+<!-- ── PAGE HERO ── -->
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-content">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span>›</span>
+      <span style="color:rgba(255,255,255,0.7)">Service Areas</span>
+    </div>
+    <div class="page-hero-label">Where We Work</div>
+    <h1>Serving Northern<br/><em>Virginia & Beyond</em></h1>
+    <p>Our certified technicians cover a wide service area across the Commonwealth of Virginia. Based in Northern Virginia, we serve residential and commercial properties throughout the region.</p>
+  </div>
+</div>
+
+<!-- ── TRUST BAR ── -->
+<div class="trust-bar">
+  <div class="trust-item"><span class="trust-icon">📍</span> Based in Northern VA</div>
+  <div class="trust-item"><span class="trust-icon">🚗</span> Mobile Service — We Come to You</div>
+  <div class="trust-item"><span class="trust-icon">⚡</span> Same-Day Appointments Available</div>
+  <div class="trust-item"><span class="trust-icon">📞</span> Call to Check Your Area</div>
+</div>
+
+<!-- ── AREAS MAIN ── -->
+<section id="areas-main">
+  <div class="max-w">
+    <div class="section-header reveal">
+      <div class="section-label">Coverage Map</div>
+      <h2 class="section-title">Counties & Cities We Serve</h2>
+      <p class="section-desc">We cover the full Northern Virginia region and are expanding. If you don't see your city, give us a call — we likely cover it or can make arrangements.</p>
+    </div>
+
+    <div class="county-section reveal">
+      <div class="county-header">
+        <div class="county-icon">🏛️</div>
+        <div>
+          <h3>Fairfax County</h3>
+          <p>Virginia's most populous county — our most active service area</p>
+        </div>
+      </div>
+      <div class="city-tags">
+        <div class="city-tag"><div class="city-tag-dot"></div>Fairfax City</div>
+        <div class="city-tag"><div class="city-tag-dot"></div>Falls Church</div>
+        <div class="city-tag"><div class="city-tag-dot"></div>Reston</div>
+        <div class="city-tag"><div class="city-tag-dot"></div>Herndon</div>
+        <div class="city-tag"><div class="city-tag-dot"></div>Chantilly</div>
+        <div class="city-tag"><div class="city-tag-dot"></div>Centreville</div>
+        <div class="city-tag"><div class="city-tag-dot"></div>Burke</div>
+        <div class="city-tag"><div class="city-tag-dot"></div>Springfield</div>
+        <div class="city-tag"><div class="city-tag-dot"></div>Annandale</div>
+        <div class="city-tag"><div class="city-tag-dot"></div>Vienna</div>
+        <div class="city-tag"><div class="city-tag-dot"></div>McLean</div>
+        <div class="city-tag"><div class="city-tag-dot"></div>Great Falls</div>
+        <div class="city-tag"><div class="city-tag-dot"></div>Oakton</div>
+        <div class="city-tag"><div class="city-tag-dot"></div>Lorton</div>
+        <div class="city-tag"><div class="city-tag-dot"></div>Clifton</div>
+      </div>
+    </div>
+
+    <div class="county-section reveal">
+      <div class="county-header">
+        <div class="county-icon">🌳</div>
+        <div>
+          <h3>Prince William County</h3>
+          <p>Fast-growing county — residential and commercial properties served</p>
+        </div>
+      </div>
+      <div class="city-tags">
+        <div class="city-tag"><div class="city-tag-dot"></div>Manassas City</div>
+        <div class="city-tag"><div class="city-tag-dot"></div>Manassas Park</div>
+        <div class="city-tag"><div class="city-tag-dot"></div>Woodbridge</div>
+        <div class="city-tag"><div class="city-tag-dot"></div>Dale City</div>
+        <div class="city-tag"><div class="city-tag-dot"></div>Lake Ridge</div>
+        <div class="city-tag"><div class="city-tag-dot"></div>Gainesville</div>
+        <div class="city-tag"><div class="city-tag-dot"></div>Haymarket</div>
+        <div class="city-tag"><div class="city-tag-dot"></div>Dumfries</div>
+        <div class="city-tag"><div class="city-tag-dot"></div>Montclair</div>
+        <div class="city-tag"><div class="city-tag-dot"></div>Triangle</div>
+        <div class="city-tag"><div class="city-tag-dot"></div>Nokesville</div>
+      </div>
+    </div>
+
+    <div class="county-section reveal">
+      <div class="county-header">
+        <div class="county-icon">🏘️</div>
+        <div>
+          <h3>Loudoun County</h3>
+          <p>Virginia's fastest-growing county — suburban and rural properties welcome</p>
+        </div>
+      </div>
+      <div class="city-tags">
+        <div class="city-tag"><div class="city-tag-dot"></div>Leesburg</div>
+        <div class="city-tag"><div class="city-tag-dot"></div>Ashburn</div>
+        <div class="city-tag"><div class="city-tag-dot"></div>Sterling</div>
+        <div class="city-tag"><div class="city-tag-dot"></div>Dulles</div>
+        <div class="city-tag"><div class="city-tag-dot"></div>South Riding</div>
+        <div class="city-tag"><div class="city-tag-dot"></div>Brambleton</div>
+        <div class="city-tag"><div class="city-tag-dot"></div>Broadlands</div>
+        <div class="city-tag"><div class="city-tag-dot"></div>Purcellville</div>
+        <div class="city-tag"><div class="city-tag-dot"></div>Lovettsville</div>
+        <div class="city-tag"><div class="city-tag-dot"></div>Hamilton</div>
+      </div>
+    </div>
+
+    <div class="county-section reveal">
+      <div class="county-header">
+        <div class="county-icon">🌆</div>
+        <div>
+          <h3>Arlington County & Alexandria City</h3>
+          <p>Dense urban properties, condos, and commercial buildings — we handle it all</p>
+        </div>
+      </div>
+      <div class="city-tags">
+        <div class="city-tag"><div class="city-tag-dot"></div>Arlington</div>
+        <div class="city-tag"><div class="city-tag-dot"></div>Rosslyn</div>
+        <div class="city-tag"><div class="city-tag-dot"></div>Ballston</div>
+        <div class="city-tag"><div class="city-tag-dot"></div>Crystal City</div>
+        <div class="city-tag"><div class="city-tag-dot"></div>Alexandria City</div>
+        <div class="city-tag"><div class="city-tag-dot"></div>Old Town Alexandria</div>
+        <div class="city-tag"><div class="city-tag-dot"></div>Del Ray</div>
+        <div class="city-tag"><div class="city-tag-dot"></div>Shirlington</div>
+      </div>
+    </div>
+
+    <div class="county-section reveal">
+      <div class="county-header">
+        <div class="county-icon">📌</div>
+        <div>
+          <h3>Stafford County & Fredericksburg</h3>
+          <p>Extended service area — we regularly travel to serve these communities</p>
+        </div>
+      </div>
+      <div class="city-tags">
+        <div class="city-tag"><div class="city-tag-dot"></div>Fredericksburg City</div>
+        <div class="city-tag"><div class="city-tag-dot"></div>Stafford</div>
+        <div class="city-tag"><div class="city-tag-dot"></div>Aquia Harbour</div>
+        <div class="city-tag"><div class="city-tag-dot"></div>Colonial Beach</div>
+        <div class="city-tag"><div class="city-tag-dot"></div>Garrisonville</div>
+        <div class="city-tag"><div class="city-tag-dot"></div>Hartwood</div>
+      </div>
+    </div>
+
+    <div class="not-sure-box reveal">
+      <h3>Don't See Your City?</h3>
+      <p>Our service area is continuously expanding. If your location isn't listed, give us a call or send a message — chances are we cover your area or can make arrangements to serve you.</p>
+      <div class="not-sure-actions">
+        <a href="contact.html" class="btn-primary">📋 Contact Us</a>
+        <a href="tel:+17035550123" class="btn-dark">📞 (703) 555-0123</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WATER AUTHORITIES ── -->
+<section id="water-authorities">
+  <div class="max-w">
+    <div class="section-header reveal">
+      <div class="section-label">Approved Testers</div>
+      <h2 class="section-title">Water Authorities We Report To</h2>
+      <p class="section-desc">We are on record as approved testers with all major Northern Virginia water authorities. We file your report directly — you don't lift a finger.</p>
+    </div>
+    <div class="authority-grid">
+      <div class="authority-card reveal">
+        <div class="authority-abbr">FCWA</div>
+        <h4>Fairfax Water</h4>
+        <p>Serving over 1.8 million customers in Fairfax County and surrounding areas.</p>
+        <div class="authority-status">Approved Tester on File</div>
+      </div>
+      <div class="authority-card reveal">
+        <div class="authority-abbr">PWCSA</div>
+        <h4>Prince William County Service Authority</h4>
+        <p>Water and wastewater services for Prince William County residents and businesses.</p>
+        <div class="authority-status">Approved Tester on File</div>
+      </div>
+      <div class="authority-card reveal">
+        <div class="authority-abbr">LW</div>
+        <h4>Loudoun Water</h4>
+        <p>Water and wastewater services for Loudoun County's rapidly growing communities.</p>
+        <div class="authority-status">Approved Tester on File</div>
+      </div>
+      <div class="authority-card reveal">
+        <div class="authority-abbr">UOSA</div>
+        <h4>Alexandria Renew / UOSA</h4>
+        <p>Upper Occoquan Service Authority — regional wastewater treatment serving Northern VA.</p>
+        <div class="authority-status">Approved Tester on File</div>
+      </div>
+      <div class="authority-card reveal">
+        <div class="authority-abbr">WSSC</div>
+        <h4>Washington Suburban Sanitary Commission</h4>
+        <p>Serving Maryland-side customers along the Virginia border near the DC metro area.</p>
+        <div class="authority-status">Approved Tester on File</div>
+      </div>
+      <div class="authority-card reveal">
+        <div class="authority-abbr">CMW</div>
+        <h4>City of Manassas Water & Sewer</h4>
+        <p>Water and wastewater services for the City of Manassas and Manassas Park.</p>
+        <div class="authority-status">Approved Tester on File</div>
+      </div>
+      <div class="authority-card reveal">
+        <div class="authority-abbr">SWA</div>
+        <h4>Stafford County Water Authority</h4>
+        <p>Public water and wastewater services for Stafford County and the Fredericksburg area.</p>
+        <div class="authority-status">Approved Tester on File</div>
+      </div>
+      <div class="authority-card reveal">
+        <div class="authority-abbr">ARW</div>
+        <h4>Arlington County Water</h4>
+        <p>Managed through Virginia American Water — serving Arlington County residents and businesses.</p>
+        <div class="authority-status">Approved Tester on File</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── EMERGENCY BANNER ── -->
+<div class="emergency-banner">
+  <p>🚨 Received a compliance notice from your water authority? Don't risk shutoff.</p>
+  <a href="tel:+17035550123">Call Now: (703) 555-0123</a>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="logo.png" alt="Backflow Services VA" />
+        <p>Virginia's trusted backflow prevention specialists. Protecting public health through expert testing, repair, and installation services across Northern Virginia since 2009.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="services.html">Annual Testing</a></li>
+          <li><a href="services.html">Device Repair</a></li>
+          <li><a href="services.html">New Installation</a></li>
+          <li><a href="services.html">Irrigation Services</a></li>
+          <li><a href="services.html">Commercial Programs</a></li>
+          <li><a href="services.html">Compliance Response</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="areas.html">Service Areas</a></li>
+          <li><a href="compliance.html">Compliance Info</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html">Get a Quote</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="tel:+17035550123">(703) 555-0123</a></li>
+          <li><a href="mailto:info@backflowservicesva.com">info@backflowservicesva.com</a></li>
+          <li><a href="areas.html">Northern Virginia & Beyond</a></li>
+          <li><a href="contact.html">Mon–Fri 7am–6pm</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Backflow Services VA. All rights reserved. Licensed & Insured in the Commonwealth of Virginia.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

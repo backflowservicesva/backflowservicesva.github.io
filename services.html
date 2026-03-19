@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services — Backflow Services VA</title>
+  <meta name="description" content="Full backflow prevention services: annual testing, device repair, new installation, irrigation, commercial programs, and compliance response across Northern Virginia." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* ── SERVICES PAGE SPECIFIC ── */
+    #services-main { background: var(--light); }
+
+    .services-full-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 28px;
+    }
+    .service-full-card {
+      background: var(--white);
+      border: 1px solid rgba(0,0,0,0.07);
+      border-radius: 16px;
+      padding: 44px 40px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .service-full-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--copper);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+    .service-full-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+    }
+    .service-full-card:hover::before { transform: scaleX(1); }
+    .service-full-icon {
+      width: 64px; height: 64px;
+      background: rgba(200,129,58,0.1);
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 30px;
+      margin-bottom: 28px;
+    }
+    .service-full-card h3 {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 14px;
+    }
+    .service-full-card > p {
+      font-size: 15px;
+      color: var(--gray);
+      line-height: 1.75;
+      margin-bottom: 28px;
+    }
+    .service-full-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+    .service-full-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.55;
+    }
+    .service-full-list li::before {
+      content: '✓';
+      color: var(--copper);
+      font-weight: 700;
+      font-size: 13px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .service-full-card .card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--copper);
+      text-decoration: none;
+      border-top: 1px solid rgba(0,0,0,0.06);
+      padding-top: 20px;
+      width: 100%;
+      transition: gap 0.2s;
+    }
+    .service-full-card .card-cta:hover { gap: 14px; }
+
+    /* Assembly types section */
+    #assembly-types { background: var(--navy); color: var(--white); }
+    #assembly-types .section-title { color: var(--white); }
+    #assembly-types .section-desc  { color: rgba(255,255,255,0.6); }
+    .assembly-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 48px;
+    }
+    .assembly-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(200,129,58,0.2);
+      border-radius: 14px;
+      padding: 32px 24px;
+      text-align: center;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .assembly-card:hover {
+      background: rgba(200,129,58,0.08);
+      border-color: rgba(200,129,58,0.45);
+    }
+    .assembly-card-abbr {
+      font-family: 'DM Mono', monospace;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--copper);
+      margin-bottom: 10px;
+      display: block;
+    }
+    .assembly-card h4 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 10px;
+      line-height: 1.35;
+    }
+    .assembly-card p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.6;
+    }
+
+    /* Pricing callout */
+    #pricing-info {
+      background: var(--cream);
+      padding: 80px 40px;
+    }
+    .pricing-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .pricing-card {
+      background: var(--white);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 20px;
+      padding: 48px;
+    }
+    .pricing-card h3 { font-size: 26px; color: var(--navy); margin-bottom: 12px; }
+    .pricing-card > p { font-size: 15px; color: var(--gray); line-height: 1.7; margin-bottom: 32px; }
+    .pricing-items {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+    .pricing-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 20px;
+      background: var(--light);
+      border-radius: 10px;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    .pricing-item-name { font-size: 14px; font-weight: 600; color: var(--navy); }
+    .pricing-item-price {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--copper);
+    }
+    .pricing-note {
+      font-size: 13px;
+      color: var(--gray);
+      line-height: 1.6;
+      font-style: italic;
+    }
+    .pricing-highlight {
+      background: var(--navy);
+      border-radius: 16px;
+      padding: 48px;
+      color: var(--white);
+    }
+    .pricing-highlight h3 { font-size: 28px; color: var(--white); margin-bottom: 20px; }
+    .pricing-highlight p  { font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.7; margin-bottom: 28px; }
+    .pricing-perks {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 36px;
+    }
+    .pricing-perk {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.8);
+    }
+    .pricing-perk-icon {
+      width: 32px; height: 32px;
+      background: rgba(200,129,58,0.2);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 900px) {
+      .pricing-inner { grid-template-columns: 1fr; gap: 32px; }
+    }
+    @media (max-width: 600px) {
+      .services-full-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a class="nav-logo" href="index.html">
+    <img src="logo.png" alt="Backflow Services VA Logo" />
+    <div class="nav-logo-text">
+      Backflow Services VA
+      <span>Virginia's Backflow Experts</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="areas.html">Service Areas</a></li>
+    <li><a href="compliance.html">Compliance</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile" id="mobileNav">
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="areas.html">Service Areas</a>
+  <a href="compliance.html">Compliance</a>
+  <a href="faq.html">FAQ</a>
+  <a href="contact.html" class="nav-cta">Get a Quote</a>
+</div>
+
+<!-- ── PAGE HERO ── -->
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-content">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span>›</span>
+      <span style="color:rgba(255,255,255,0.7)">Services</span>
+    </div>
+    <div class="page-hero-label">What We Offer</div>
+    <h1>Complete Backflow<br/><em>Prevention Services</em></h1>
+    <p>From annual compliance testing to full device installation — we handle every aspect of backflow prevention for residential, commercial, and industrial properties across Virginia.</p>
+  </div>
+</div>
+
+<!-- ── TRUST BAR ── -->
+<div class="trust-bar">
+  <div class="trust-item"><span class="trust-icon">✅</span> VA DPOR Certified</div>
+  <div class="trust-item"><span class="trust-icon">🏅</span> ASSE Certified Testers</div>
+  <div class="trust-item"><span class="trust-icon">📄</span> Same-Day Reports Filed</div>
+  <div class="trust-item"><span class="trust-icon">🔧</span> All Makes & Models</div>
+  <div class="trust-item"><span class="trust-icon">⚡</span> Emergency Service Available</div>
+</div>
+
+<!-- ── SERVICES FULL GRID ── -->
+<section id="services-main">
+  <div class="max-w">
+    <div class="section-header reveal">
+      <div class="section-label">Our Services</div>
+      <h2 class="section-title">Everything You Need.<br/>All in One Place.</h2>
+      <p class="section-desc">We are specialists — backflow prevention is all we do, and we do it better than anyone in Northern Virginia.</p>
+    </div>
+    <div class="services-full-grid">
+
+      <div class="service-full-card reveal">
+        <div class="service-full-icon">🧪</div>
+        <h3>Annual Backflow Testing</h3>
+        <p>Virginia law and your local water authority require annual testing of all backflow prevention assemblies. Our certified testers conduct precise tests to ASSE standards and handle all reporting for you.</p>
+        <ul class="service-full-list">
+          <li>ASSE Series 5000 certified testers on every job</li>
+          <li>Test report filed with your water authority within 24 hours</li>
+          <li>Pass/fail certification letter provided same day</li>
+          <li>Annual reminder service — we track your renewal date</li>
+          <li>All assembly types and all water authorities covered</li>
+          <li>Multi-unit and HOA bulk scheduling available</li>
+        </ul>
+        <a href="contact.html" class="card-cta">Schedule a Test →</a>
+      </div>
+
+      <div class="service-full-card reveal">
+        <div class="service-full-icon">🔧</div>
+        <h3>Backflow Device Repair</h3>
+        <p>A failed test requires prompt repair before your device can be returned to service. Our trucks are stocked with repair parts for the most common assemblies, so most repairs happen on the same visit as the test.</p>
+        <ul class="service-full-list">
+          <li>Same-visit repairs when parts are available (most cases)</li>
+          <li>OEM and quality aftermarket parts in stock</li>
+          <li>Immediate re-test performed after every repair</li>
+          <li>Reduced pressure zone (RPZ) repairs</li>
+          <li>Double check valve assembly (DCVA) repairs</li>
+          <li>Pressure vacuum breaker (PVB) repairs</li>
+        </ul>
+        <a href="contact.html" class="card-cta">Request a Repair →</a>
+      </div>
+
+      <div class="service-full-card reveal">
+        <div class="service-full-icon">🏗️</div>
+        <h3>New Device Installation</h3>
+        <p>New construction, a new irrigation system, or upgrading an aging assembly — we install the correct device for your specific application, water authority requirements, and local building codes.</p>
+        <ul class="service-full-list">
+          <li>Free on-site assessment to determine correct assembly type</li>
+          <li>Permit pulling assistance available</li>
+          <li>All assembly types: RPZ, DCVA, PVB, AVB, SVB</li>
+          <li>Irrigation system backflow installation specialists</li>
+          <li>Fire suppression system assemblies</li>
+          <li>Commercial boiler and HVAC hookups</li>
+        </ul>
+        <a href="contact.html" class="card-cta">Get an Installation Quote →</a>
+      </div>
+
+      <div class="service-full-card reveal">
+        <div class="service-full-icon">🌿</div>
+        <h3>Irrigation Backflow Services</h3>
+        <p>All lawn irrigation systems connected to the public water supply require a compliant backflow preventer and annual testing. We specialize in residential and commercial irrigation systems of all sizes.</p>
+        <ul class="service-full-list">
+          <li>Annual irrigation backflow assembly testing</li>
+          <li>Spring activation inspection and testing</li>
+          <li>Winterization of assemblies before freeze season</li>
+          <li>New PVB and RPZ installation for irrigation</li>
+          <li>Homeowners, HOAs, commercial properties, and schools</li>
+          <li>Multi-property discounts for 3+ locations</li>
+        </ul>
+        <a href="contact.html" class="card-cta">Schedule Irrigation Service →</a>
+      </div>
+
+      <div class="service-full-card reveal">
+        <div class="service-full-icon">🏢</div>
+        <h3>Commercial & HOA Programs</h3>
+        <p>Streamlined bulk testing programs for property managers, HOAs, and commercial landlords who need multiple units handled on schedule with clean consolidated billing and documentation.</p>
+        <ul class="service-full-list">
+          <li>Scheduled annual bulk testing — all units in one day</li>
+          <li>Consolidated invoicing and documentation packages</li>
+          <li>Compliance tracking and reminder system</li>
+          <li>Dedicated account manager for your portfolio</li>
+          <li>Priority scheduling and discounted rates</li>
+          <li>Custom program design for large portfolios</li>
+        </ul>
+        <a href="contact.html" class="card-cta">Ask About Commercial Programs →</a>
+      </div>
+
+      <div class="service-full-card reveal">
+        <div class="service-full-icon">⚠️</div>
+        <h3>Compliance & Violation Response</h3>
+        <p>Received a compliance notice or water service shutoff threat from your water authority? We respond fast, handle all coordination with the utility, and provide a complete documentation package.</p>
+        <ul class="service-full-list">
+          <li>Expedited same-day or next-day response</li>
+          <li>Direct coordination with your water authority</li>
+          <li>Complete documentation package for your records</li>
+          <li>Violation dispute assistance when applicable</li>
+          <li>Future compliance planning to prevent recurrence</li>
+          <li>Available 7 days a week for urgent cases</li>
+        </ul>
+        <a href="contact.html" class="card-cta">Get Emergency Help →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── ASSEMBLY TYPES ── -->
+<section id="assembly-types">
+  <div class="max-w">
+    <div class="section-header reveal">
+      <div class="section-label">Equipment Expertise</div>
+      <h2 class="section-title">All Assembly Types Serviced</h2>
+      <p class="section-desc">We test, repair, and install every type of backflow prevention assembly used in Virginia — residential to industrial.</p>
+    </div>
+    <div class="assembly-grid">
+      <div class="assembly-card reveal">
+        <span class="assembly-card-abbr">RPZ</span>
+        <h4>Reduced Pressure Zone Assembly</h4>
+        <p>Highest level of protection. Required for high-hazard applications including chemical facilities, irrigation, and fire suppression.</p>
+      </div>
+      <div class="assembly-card reveal">
+        <span class="assembly-card-abbr">DCVA</span>
+        <h4>Double Check Valve Assembly</h4>
+        <p>Used for medium-hazard connections. Common in commercial buildings, boilers, and non-chemical irrigation systems.</p>
+      </div>
+      <div class="assembly-card reveal">
+        <span class="assembly-card-abbr">PVB</span>
+        <h4>Pressure Vacuum Breaker</h4>
+        <p>Most common device for residential irrigation systems. Must be installed above the highest downstream outlet.</p>
+      </div>
+      <div class="assembly-card reveal">
+        <span class="assembly-card-abbr">AVB</span>
+        <h4>Atmospheric Vacuum Breaker</h4>
+        <p>Non-testable device used for low-hazard applications such as hose bibs and individual outlets.</p>
+      </div>
+      <div class="assembly-card reveal">
+        <span class="assembly-card-abbr">SVB</span>
+        <h4>Spill-Resistant Vacuum Breaker</h4>
+        <p>Updated alternative to the standard PVB. Offers the same protection with reduced risk of discharge at the relief port.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRICING INFO ── -->
+<section id="pricing-info">
+  <div class="pricing-inner">
+    <div class="pricing-card reveal">
+      <h3>Transparent, Upfront Pricing</h3>
+      <p>We provide clear quotes before any work begins. No hidden fees, no surprise charges. Pricing varies based on assembly type, access, and location — contact us for an exact quote.</p>
+      <div class="pricing-items">
+        <div class="pricing-item">
+          <span class="pricing-item-name">Annual Backflow Test (single assembly)</span>
+          <span class="pricing-item-price">Call for pricing</span>
+        </div>
+        <div class="pricing-item">
+          <span class="pricing-item-name">Test + Minor Repair (parts included)</span>
+          <span class="pricing-item-price">Call for pricing</span>
+        </div>
+        <div class="pricing-item">
+          <span class="pricing-item-name">New Device Installation</span>
+          <span class="pricing-item-price">Call for pricing</span>
+        </div>
+        <div class="pricing-item">
+          <span class="pricing-item-name">Commercial / HOA Bulk Programs</span>
+          <span class="pricing-item-price">Volume discounts available</span>
+        </div>
+      </div>
+      <p class="pricing-note">Prices include report filing with your water authority. Multi-assembly discounts available. Emergency and after-hours service available at additional cost.</p>
+    </div>
+    <div class="pricing-highlight reveal">
+      <h3>Why We're Worth It</h3>
+      <p>Failing to test or repair your backflow device can result in water service shutoff, steep fines, and liability for contamination damage. Our service protects your property, your tenants, and the public water supply.</p>
+      <div class="pricing-perks">
+        <div class="pricing-perk"><div class="pricing-perk-icon">📄</div>Report filed directly with your water authority</div>
+        <div class="pricing-perk"><div class="pricing-perk-icon">🔧</div>Most repairs done same visit — no second trip charge</div>
+        <div class="pricing-perk"><div class="pricing-perk-icon">🔔</div>Annual reminder so you never miss a deadline</div>
+        <div class="pricing-perk"><div class="pricing-perk-icon">🛡️</div>Fully insured technicians on every job</div>
+        <div class="pricing-perk"><div class="pricing-perk-icon">⚡</div>Same-day emergency service when needed</div>
+      </div>
+      <a href="contact.html" class="btn-primary" style="width:100%;justify-content:center">Get a Free Quote →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── EMERGENCY BANNER ── -->
+<div class="emergency-banner">
+  <p>🚨 Received a compliance notice from your water authority? Don't risk shutoff.</p>
+  <a href="tel:+17035550123">Call Now: (703) 555-0123</a>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="logo.png" alt="Backflow Services VA" />
+        <p>Virginia's trusted backflow prevention specialists. Protecting public health through expert testing, repair, and installation services across Northern Virginia since 2009.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="services.html">Annual Testing</a></li>
+          <li><a href="services.html">Device Repair</a></li>
+          <li><a href="services.html">New Installation</a></li>
+          <li><a href="services.html">Irrigation Services</a></li>
+          <li><a href="services.html">Commercial Programs</a></li>
+          <li><a href="services.html">Compliance Response</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="areas.html">Service Areas</a></li>
+          <li><a href="compliance.html">Compliance Info</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html">Get a Quote</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="tel:+17035550123">(703) 555-0123</a></li>
+          <li><a href="mailto:info@backflowservicesva.com">info@backflowservicesva.com</a></li>
+          <li><a href="areas.html">Northern Virginia & Beyond</a></li>
+          <li><a href="contact.html">Mon–Fri 7am–6pm</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Backflow Services VA. All rights reserved. Licensed & Insured in the Commonwealth of Virginia.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact & Get a Quote — Backflow Services VA</title>
+  <meta name="description" content="Schedule your backflow test or request a quote. Same-day and next-day appointments available across Northern Virginia. We respond within 2 hours." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* ── CONTACT PAGE SPECIFIC ── */
+    #contact-main { background: var(--light); }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    /* Info side */
+    .contact-info-items {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .contact-info-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .contact-info-icon {
+      width: 48px; height: 48px;
+      background: var(--navy);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+    .contact-info-item h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--copper);
+      margin-bottom: 6px;
+    }
+    .contact-info-item p,
+    .contact-info-item a {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--navy);
+      text-decoration: none;
+      line-height: 1.5;
+    }
+    .contact-info-item a:hover { color: var(--copper); }
+
+    .hours-grid {
+      margin-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      color: var(--text);
+      padding: 8px 12px;
+      background: rgba(200,129,58,0.05);
+      border-radius: 8px;
+    }
+    .hours-row .day   { font-weight: 600; color: var(--navy); }
+    .hours-row .time  { color: var(--gray); }
+    .hours-row .emerg { color: var(--copper); font-weight: 600; }
+
+    .response-promise {
+      background: var(--navy);
+      border-radius: 14px;
+      padding: 28px;
+      margin-top: 32px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .response-promise-icon { font-size: 36px; flex-shrink: 0; }
+    .response-promise h4   { font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+    .response-promise p    { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.5; }
+
+    /* Form side */
+    .contact-form-box {
+      background: var(--white);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 20px;
+      padding: 52px;
+    }
+    .contact-form-box h3 {
+      font-size: 28px;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .contact-form-box > p {
+      font-size: 15px;
+      color: var(--gray);
+      margin-bottom: 36px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      margin-bottom: 16px;
+    }
+    .form-group label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 13px 16px;
+      border: 1.5px solid rgba(0,0,0,0.1);
+      border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      color: var(--text);
+      background: var(--light);
+      transition: border-color 0.2s, background 0.2s;
+      outline: none;
+      width: 100%;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--copper);
+      background: var(--white);
+    }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+
+    .urgency-options {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .urgency-opt {
+      position: relative;
+    }
+    .urgency-opt input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      width: 0; height: 0;
+    }
+    .urgency-opt label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      padding: 14px 10px;
+      background: var(--light);
+      border: 1.5px solid rgba(0,0,0,0.08);
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--navy);
+      text-align: center;
+      line-height: 1.3;
+      transition: all 0.2s;
+    }
+    .urgency-opt label span.icon { font-size: 22px; }
+    .urgency-opt input[type="radio"]:checked + label {
+      background: rgba(200,129,58,0.1);
+      border-color: var(--copper);
+      color: var(--copper);
+    }
+    .urgency-opt label:hover {
+      border-color: var(--copper);
+    }
+
+    .form-submit {
+      width: 100%;
+      padding: 17px;
+      background: var(--navy);
+      color: var(--white);
+      font-size: 16px;
+      font-weight: 700;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      margin-top: 8px;
+      font-family: 'DM Sans', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .form-submit:hover { background: var(--copper); transform: translateY(-1px); }
+    .form-submit:disabled { background: #2a7a4b; cursor: default; transform: none; }
+
+    .form-note {
+      text-align: center;
+      font-size: 13px;
+      color: var(--gray);
+      margin-top: 14px;
+    }
+
+    /* Section label in form */
+    .form-section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--copper);
+      margin: 24px 0 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(200,129,58,0.2);
+    }
+
+    /* Success state */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 40px 0;
+    }
+    .form-success .success-icon { font-size: 64px; margin-bottom: 20px; }
+    .form-success h4 { font-size: 24px; color: var(--navy); margin-bottom: 12px; }
+    .form-success p  { font-size: 15px; color: var(--gray); line-height: 1.7; }
+
+    @media (max-width: 900px) {
+      .contact-layout { grid-template-columns: 1fr; gap: 40px; }
+      .contact-form-box { padding: 32px 24px; }
+      .urgency-options { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .form-row { grid-template-columns: 1fr; }
+      .urgency-options { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a class="nav-logo" href="index.html">
+    <img src="logo.png" alt="Backflow Services VA Logo" />
+    <div class="nav-logo-text">
+      Backflow Services VA
+      <span>Virginia's Backflow Experts</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="areas.html">Service Areas</a></li>
+    <li><a href="compliance.html">Compliance</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile" id="mobileNav">
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="areas.html">Service Areas</a>
+  <a href="compliance.html">Compliance</a>
+  <a href="faq.html">FAQ</a>
+  <a href="contact.html" class="nav-cta">Get a Quote</a>
+</div>
+
+<!-- ── PAGE HERO ── -->
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-content">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span>›</span>
+      <span style="color:rgba(255,255,255,0.7)">Contact</span>
+    </div>
+    <div class="page-hero-label">Get In Touch</div>
+    <h1>Schedule a Test or<br/><em>Request a Quote</em></h1>
+    <p>Fill out the form and we'll respond within 2 business hours. Same-day and next-day appointments are often available across Northern Virginia.</p>
+  </div>
+</div>
+
+<!-- ── CONTACT MAIN ── -->
+<section id="contact-main">
+  <div class="max-w">
+    <div class="contact-layout">
+
+      <!-- INFO -->
+      <div>
+        <div class="section-label reveal">Contact Information</div>
+        <h2 class="section-title reveal" style="font-size:clamp(28px,3vw,42px)">We're Ready<br/>to Help</h2>
+        <p class="section-desc reveal">Whether it's a routine annual test or an urgent compliance situation, our team is ready to assist you promptly.</p>
+
+        <div class="contact-info-items">
+          <div class="contact-info-item reveal">
+            <div class="contact-info-icon">📞</div>
+            <div>
+              <h4>Phone</h4>
+              <a href="tel:+17035550123">(703) 555-0123</a>
+            </div>
+          </div>
+          <div class="contact-info-item reveal">
+            <div class="contact-info-icon">📧</div>
+            <div>
+              <h4>Email</h4>
+              <a href="mailto:info@backflowservicesva.com">info@backflowservicesva.com</a>
+            </div>
+          </div>
+          <div class="contact-info-item reveal">
+            <div class="contact-info-icon">📍</div>
+            <div>
+              <h4>Service Area</h4>
+              <p>Northern Virginia & Surrounding Counties<br/><a href="areas.html" style="font-size:13px;font-weight:600">View full service area →</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hours-grid" style="margin-top:36px" >
+          <div class="reveal">
+            <p style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--copper);margin-bottom:12px">Business Hours</p>
+          </div>
+          <div class="hours-row reveal">
+            <span class="day">Monday – Friday</span>
+            <span class="time">7:00 AM – 6:00 PM</span>
+          </div>
+          <div class="hours-row reveal">
+            <span class="day">Saturday</span>
+            <span class="time">8:00 AM – 2:00 PM</span>
+          </div>
+          <div class="hours-row reveal">
+            <span class="day">Sunday</span>
+            <span class="emerg">Emergency service only</span>
+          </div>
+          <div class="hours-row reveal">
+            <span class="day">After Hours / Emergency</span>
+            <span class="emerg">24 / 7 Available</span>
+          </div>
+        </div>
+
+        <div class="response-promise reveal">
+          <div class="response-promise-icon">⚡</div>
+          <div>
+            <h4>2-Hour Response Guarantee</h4>
+            <p>We respond to all quote requests within 2 business hours. For urgent matters, call us directly for an immediate response.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FORM -->
+      <div class="contact-form-box reveal">
+        <h3>Request a Quote</h3>
+        <p>Tell us about your property and service needs and we'll get right back to you.</p>
+
+        <div id="contactForm">
+          <!-- Contact Info -->
+          <div class="form-section-label">Your Information</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name *</label>
+              <input type="text" id="firstName" placeholder="John" />
+            </div>
+            <div class="form-group">
+              <label>Last Name *</label>
+              <input type="text" id="lastName" placeholder="Smith" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Phone *</label>
+              <input type="tel" id="phone" placeholder="(703) 555-0000" />
+            </div>
+            <div class="form-group">
+              <label>Email *</label>
+              <input type="email" id="email" placeholder="john@email.com" />
+            </div>
+          </div>
+
+          <!-- Property Info -->
+          <div class="form-section-label">Property Details</div>
+          <div class="form-group">
+            <label>Service Address *</label>
+            <input type="text" id="address" placeholder="123 Main St, Fairfax, VA 22030" />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Property Type</label>
+              <select id="propertyType">
+                <option value="">Select property type...</option>
+                <option>Single-Family Residential</option>
+                <option>Multi-Family / Apartment</option>
+                <option>Commercial / Office</option>
+                <option>Restaurant / Food Service</option>
+                <option>Industrial / Warehouse</option>
+                <option>HOA / Community</option>
+                <option>Medical / Dental</option>
+                <option>School / Government</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Number of Assemblies</label>
+              <select id="numAssemblies">
+                <option value="">Select...</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3–5</option>
+                <option>6–10</option>
+                <option>10+</option>
+                <option>Not sure</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Service Needed -->
+          <div class="form-section-label">Service Needed</div>
+          <div class="form-group">
+            <label>Type of Service</label>
+            <select id="serviceType">
+              <option value="">Select a service...</option>
+              <option>Annual Backflow Test</option>
+              <option>Backflow Repair</option>
+              <option>New Device Installation</option>
+              <option>Irrigation Backflow Service</option>
+              <option>Commercial / HOA Program</option>
+              <option>Compliance / Violation Response</option>
+              <option>Not Sure — Need Assessment</option>
+            </select>
+          </div>
+
+          <!-- Urgency -->
+          <div class="form-section-label">How Urgent Is This?</div>
+          <div class="urgency-options">
+            <div class="urgency-opt">
+              <input type="radio" name="urgency" id="u1" value="flexible" />
+              <label for="u1"><span class="icon">📅</span>Flexible — within 2 weeks</label>
+            </div>
+            <div class="urgency-opt">
+              <input type="radio" name="urgency" id="u2" value="soon" />
+              <label for="u2"><span class="icon">⏰</span>Soon — within a few days</label>
+            </div>
+            <div class="urgency-opt">
+              <input type="radio" name="urgency" id="u3" value="urgent" />
+              <label for="u3"><span class="icon">🚨</span>Urgent — same or next day</label>
+            </div>
+          </div>
+
+          <!-- Notes -->
+          <div class="form-section-label">Additional Information</div>
+          <div class="form-group">
+            <label>Notes or Questions</label>
+            <textarea id="notes" placeholder="Describe your assembly type, mention any compliance notices you've received, or ask us anything..."></textarea>
+          </div>
+
+          <button class="form-submit" id="formSubmit">
+            📋 Submit Quote Request
+          </button>
+          <p class="form-note">We'll respond within 2 business hours. No spam, no obligation.</p>
+        </div>
+
+        <!-- Success message (shown on submit) -->
+        <div class="form-success" id="formSuccess">
+          <div class="success-icon">✅</div>
+          <h4>Request Received!</h4>
+          <p>Thank you for reaching out. We'll review your request and respond within 2 business hours. For urgent matters, please call us directly at <a href="tel:+17035550123" style="color:var(--copper)">(703) 555-0123</a>.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── EMERGENCY BANNER ── -->
+<div class="emergency-banner">
+  <p>🚨 Received a compliance notice from your water authority? Don't risk shutoff.</p>
+  <a href="tel:+17035550123">Call Now: (703) 555-0123</a>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="logo.png" alt="Backflow Services VA" />
+        <p>Virginia's trusted backflow prevention specialists. Protecting public health through expert testing, repair, and installation services across Northern Virginia since 2009.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="services.html">Annual Testing</a></li>
+          <li><a href="services.html">Device Repair</a></li>
+          <li><a href="services.html">New Installation</a></li>
+          <li><a href="services.html">Irrigation Services</a></li>
+          <li><a href="services.html">Commercial Programs</a></li>
+          <li><a href="services.html">Compliance Response</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="areas.html">Service Areas</a></li>
+          <li><a href="compliance.html">Compliance Info</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html">Get a Quote</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="tel:+17035550123">(703) 555-0123</a></li>
+          <li><a href="mailto:info@backflowservicesva.com">info@backflowservicesva.com</a></li>
+          <li><a href="areas.html">Northern Virginia & Beyond</a></li>
+          <li><a href="contact.html">Mon–Fri 7am–6pm</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Backflow Services VA. All rights reserved. Licensed & Insured in the Commonwealth of Virginia.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+  // Contact page specific form handling
+  document.getElementById('formSubmit').addEventListener('click', function(e) {
+    e.preventDefault();
+    const firstName = document.getElementById('firstName').value.trim();
+    const phone     = document.getElementById('phone').value.trim();
+    const address   = document.getElementById('address').value.trim();
+
+    if (!firstName || !phone || !address) {
+      alert('Please fill in your name, phone number, and service address before submitting.');
+      return;
+    }
+
+    document.getElementById('contactForm').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  });
+</script>
+</body>
+</html>
