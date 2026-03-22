@@ -1,0 +1,19 @@
+name: Generate Sitemap
+
+on:
+  push:
+    branches:
+      - main  # or your default branch
+  workflow_dispatch:  # allows manual trigger
+
+jobs:
+  sitemap:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Generate Sitemap
+        uses: cicirello/generate-sitemap@v1.10.4
+        with:
+          base-url: 'https://https://backflowservicesva.com'
+          source-dir: 'public'          # or your site's build/output folder
+          output-file: 'public/sitemap.xml'  # optional, defaults to sitemap.xml
