@@ -21,7 +21,7 @@ jobs:
         uses: cicirello/generate-sitemap@v1.10.4
         with:
           base-url-path: 'https://backflowservicesva.com/'
-          path-to-root: 'public'
+          path-to-root: '.'
 
       # 3. Commit and push the generated sitemap back to the repository
       - name: Commit and push
