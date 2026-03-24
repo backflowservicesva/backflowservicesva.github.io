@@ -3,17 +3,33 @@ name: Generate Sitemap
 on:
   push:
     branches:
-      - main  # or your default branch
-  workflow_dispatch:  # allows manual trigger
+      - main
+  workflow_dispatch:
 
 jobs:
   sitemap:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 
+
+      # 2. Generate the sitemap
       - name: Generate Sitemap
         uses: cicirello/generate-sitemap@v1.10.4
         with:
-          base-url: 'https://backflowservicesva.com'
-          source-dir: 'public'
-          output-file: 'public/sitemap.xml'
+          base-url-path: 'https://backflowservicesva.com/'
+          path-to-root: 'public'
+
+      # 3. Commit and push the generated sitemap back to the repository
+      - name: Commit and push
+        run: |
+          if [[ `git status --porcelain` ]]; then
+            git config --global user.name 'github-actions[bot]'
+            git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git add public/sitemap.xml
+            git commit -m "Automated sitemap update"
+            git push
+          fi
