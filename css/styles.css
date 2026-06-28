@@ -190,7 +190,7 @@ nav.scrolled {
    PAGE HERO (inner pages)
    ───────────────────────────────────────── */
 .page-hero {
-  background: var(--navy);
+  background: var(--lightblue);
   padding: 130px 40px 80px;
   position: relative;
   overflow: hidden;
