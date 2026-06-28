@@ -5,7 +5,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --lightblue:   #247FBF; 
+  --lightblue:   #1E5C8F; 
   --navy:    #0b1f3a;
   --navy2:   #112847;
   --copper:  #c8813a;
