@@ -231,6 +231,15 @@
     #cta-band p  { font-size: 17px; color: var(--gray); margin-bottom: 36px; }
     .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 
+    /* Trust bar flush at top of services section */
+    .trust-bar--flush {
+      margin: 0 -40px 64px;
+      width: auto;
+    }
+    @media (max-width: 900px) {
+      .trust-bar--flush { margin: 0 -24px 48px; }
+    }
+
     /* Responsive home-only */
     @media (max-width: 900px) {
       #hero { padding: 100px 24px 220px; }
@@ -342,8 +351,8 @@
 -->
   
 <!-- ── SERVICES PREVIEW ── -->
-<section style="background:var(--light)">
-    <div class="trust-bar">
+<section style="background:var(--light);padding-top:0">
+  <div class="trust-bar trust-bar--flush">
     <div class="trust-item"><span class="trust-icon">✅</span> VA DPOR Certified</div>
     <div class="trust-item"><span class="trust-icon">📄</span> Same-Day Reports Filed</div>
     <div class="trust-item"><span class="trust-icon">🔧</span> All Makes & Models</div>
@@ -401,7 +410,7 @@
       <div>
         <div class="section-label reveal">Why Choose Us</div>
         <h2 class="section-title reveal">Virginia's Most<br/>Trusted Backflow<br/>Specialists</h2>
-        <p class="section-desc reveal">We've built our reputation on precision, speed, and reliability. When water safety is on the line, you need professionals who know Virginia codes inwhatside and out.</p>
+        <p class="section-desc reveal">We've built our reputation on precision, speed, and reliability. When water safety is on the line, you need professionals who know Virginia codes inside and out.</p>
         <div class="why-features" style="margin-top:40px">
           <div class="why-feature reveal">
             <div class="why-feature-icon">⚡</div>
